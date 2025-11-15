@@ -13,6 +13,7 @@ public:
 };
 
 // Abstract Observable interface: a YouTube channel interface
+
 class IChannel
 {
 public:
@@ -86,6 +87,7 @@ private:
     Channel *channel;
 
 public:
+
     Subscriber(const string &name, Channel *channel)
     {
         this->name = name;
@@ -98,26 +100,27 @@ public:
         cout << "Hey " << name << "," << this->channel->getVideoData();
     }
 };
-
 int main()
 {
-    // Create a channel and subscribers
     Channel *channel = new Channel("CoderArmy");
-
     Subscriber *subs1 = new Subscriber("Varun", channel);
     Subscriber *subs2 = new Subscriber("Tarun", channel);
 
     // Varun and Tarun subscribe to CoderArmy
+
     channel->subscribe(subs1);
     channel->subscribe(subs2);
 
     // Upload a video: both Varun and Tarun are notified
+
     channel->uploadVideo("Observer Pattern Tutorial");
 
     // Varun unsubscribes; Tarun remains subscribed
+
     channel->unsubscribe(subs1);
 
     // Upload another video: only Tarun is notified
+
     channel->uploadVideo("Decorator Pattern Tutorial");
 
     return 0;
